@@ -1,6 +1,5 @@
 use gtk::{glib, DrawingArea};
 use gtk::subclass::prelude::*;
-use gtk::glib::subclass::types::InterfaceList;
 use std::sync::Mutex;
 use crate::board::Board;
 

@@ -16,7 +16,7 @@ impl Board {
         let mut pieces: Vec<PieceRecord> = vec![];
 
         let mut row = 8;
-        let mut col = 0;
+        let mut col;
 
         for line in fen_board.split('/') {
             row -= 1;
@@ -46,20 +46,20 @@ pub struct PieceRecord {
 impl Debug for Board {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         for row in (0..8).rev() {
-            f.write_char('|');
+            f.write_char('|')?;
             for col in 0..8 {
                 let mut empty = true;
                 for record in &self.pieces {
                     if record.pos.0 == row && record.pos.1 == col {
-                        f.write_fmt(format_args!("{}", record.piece));
+                        f.write_fmt(format_args!("{}", record.piece))?;
                         empty = false;
                         break;
                     }
                 }
-                if empty {f.write_char(' ');};
-                f.write_char('|');
+                if empty {f.write_char(' ')?;};
+                f.write_char('|')?;
             }
-            f.write_char('\n');
+            f.write_char('\n')?;
         }
         Ok(())
     }

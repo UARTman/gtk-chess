@@ -69,7 +69,7 @@ impl Debug for Piece {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         Debug::fmt(&self.color, f)?;
         f.write_char(' ')?;
-        Debug::fmt(&self.kind, f);
+        Debug::fmt(&self.kind, f)?;
         Ok(())
     }
 }
