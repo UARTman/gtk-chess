@@ -1,18 +1,26 @@
+use gtk::cairo::ImageSurface;
 use gtk::{glib, DrawingArea};
 use gtk::subclass::prelude::*;
+use std::collections::HashMap;
+use std::fs::File;
 use std::sync::Mutex;
 use crate::board::Board;
+use crate::board::piece::Piece;
 
 pub struct ChessArea {
-    pub board: Mutex<crate::Board>
+    pub board: Mutex<crate::Board>,
+    pub texture: ImageSurface,
 }
 
 impl Default for ChessArea {
     fn default() -> Self {
+        let mut file = File::open("chess_50.png").unwrap();
+        let s = ImageSurface::create_from_png(&mut file).unwrap();
         Self {
             board: Mutex::new(
                 Board::from_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
-            )
+            ),
+            texture: s,
         }
     }
 }

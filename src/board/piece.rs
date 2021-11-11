@@ -1,12 +1,12 @@
 use std::fmt::{Display, Formatter, Write, Debug};
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash)]
 pub struct Piece {
     pub kind: PieceKind,
     pub color: PieceColor,
 }
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub enum PieceKind {
     Pawn,
     Bishop,
@@ -16,7 +16,7 @@ pub enum PieceKind {
     Queen,
 }
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub enum PieceColor {
     Black,
     White

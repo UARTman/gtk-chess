@@ -1,4 +1,4 @@
-mod piece;
+pub mod piece;
 use piece::*;
 use std::fmt::{Debug, Formatter, Write};
 

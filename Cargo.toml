@@ -8,3 +8,6 @@ edition = "2018"
 
 [dependencies]
 gtk = { version = "0.2", package = "gtk4" }
+
+[dependencies.cairo-rs]
+features = ["png"]
